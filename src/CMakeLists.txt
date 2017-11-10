@@ -72,6 +72,7 @@ set(LUABIND_DETAIL_API
 	../luabind/detail/call_function.hpp
 	../luabind/detail/call.hpp
 	../luabind/detail/call_member.hpp
+    ../luabind/detail/call_shared.hpp
 	../luabind/detail/class_registry.hpp
 	../luabind/detail/class_rep.hpp
 	../luabind/detail/constructor.hpp
@@ -170,11 +171,14 @@ if(INSTALL_LUABIND)
 	if(NOT BIN_DIR)
 		set(BIN_DIR bin)
 	endif()
-	install(FILES ${LUABIND_API}
+    install(FILES ${LUABIND_API} ${LUABIND_USER_POLICIES}
 		DESTINATION ${INCLUDE_DIR}/luabind
 		COMPONENT sdk)
-	install(FILES ${LUABIND_DETAIL_API}
+    install(FILES ${LUABIND_DETAIL_API}
 		DESTINATION ${INCLUDE_DIR}/luabind/detail
+		COMPONENT sdk)
+    install(FILES ${LUABIND_DEFAULT_POLICIES}
+		DESTINATION ${INCLUDE_DIR}/luabind/detail/conversion_policies
 		COMPONENT sdk)
 	install(TARGETS luabind
 		EXPORT luabind

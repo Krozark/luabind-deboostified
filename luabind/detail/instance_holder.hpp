@@ -96,7 +96,7 @@ namespace luabind {
 				return true;
 			}
 
-			std::pair<void*, int> get(cast_graph const& casts, class_id target) const
+			std::pair<void*, int> get(cast_graph const& casts, class_id target) const override
 			{
 				const auto this_id = registered_class<ValueType>::id;
 				void* const naked_ptr = const_cast<void*>((const void*)&val_);
@@ -134,7 +134,7 @@ namespace luabind {
 				return val_ ? true : false;
 			}
 
-			std::pair<void*, int> get(cast_graph const& casts, class_id target) const
+			std::pair<void*, int> get(cast_graph const& casts, class_id target) const override
 			{
 				const auto value_id = registered_class<ValueType>::id;
 				void* const naked_value_ptr = const_cast<void*>((const void*) &val_);
